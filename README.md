@@ -97,12 +97,7 @@ Each game entry contains:
 
 ### Quick Start
 
-1. **Run the main application**:
-   ```bash
-   uv run python main.py
-   ```
-
-2. **Explore with Jupyter notebooks**:
+1. **Explore with Jupyter notebooks**:
    - `Udaplay_01_starter_project.ipynb`: RAG system implementation
    - `Udaplay_02_starter_project.ipynb`: Complete agent development
 
@@ -145,90 +140,8 @@ gaming-rag-research-agent/
 └── *.ipynb                         # Jupyter notebooks for development
 ```
 
-## 🎯 Usage Examples
-
-### Basic Game Query
-```python
-from lib.agents import Agent
-from lib.rag import setup_rag_system
-
-# Initialize the RAG system
-rag_system = setup_rag_system()
-
-# Create an agent
-agent = Agent(
-    model_name="gpt-4",
-    instructions="You are a helpful gaming research assistant.",
-    tools=[retrieve_game, evaluate_retrieval, game_web_search]
-)
-
-# Query the system
-response = agent.run("Tell me about racing games from the 1990s")
-```
-
-### Advanced Research Query
-```python
-# Multi-step research query
-response = agent.run(
-    "Compare the gameplay mechanics of Gran Turismo with modern racing simulators. "
-    "What innovations did it introduce?"
-)
-```
-
-## 🔧 Customization
-
-### Adding New Games
-1. Create a new JSON file in the `games/` directory
-2. Follow the existing schema structure
-3. Rebuild the vector database index
-
-### Extending Tools
-1. Implement new tools in `lib/tooling.py`
-2. Register tools with the agent during initialization
-3. Update the agent's instructions to include new capabilities
-
-### Custom Embeddings
-Modify the embedding function in `lib/vector_db.py` to use different models or providers.
-
-## 📝 Development Notes
-
-### Dependencies
-- **chromadb**: Vector database for semantic search
-- **openai**: Language model API integration
-- **tavily-python**: Web search capabilities
-- **pydantic**: Data validation and parsing
-- **python-dotenv**: Environment variable management
-- **pdfplumber**: Document processing utilities
-
-### Performance Considerations
-- Vector database uses persistent storage for faster subsequent startups
-- Memory management optimizes token usage in conversations
-- Evaluation framework helps monitor and improve system performance
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Create a Pull Request
-
 ## 📄 License
 
 This project is part of the Udacity Agentic AI Nanodegree program.
-
-## 🆘 Troubleshooting
-
-### Common Issues
-
-1. **ChromaDB Permission Errors**: Ensure proper read/write permissions for the `chromadb/` directory
-2. **API Key Errors**: Verify that all required API keys are properly set in your `.env` file
-3. **Memory Issues**: Monitor token usage and implement memory cleanup for long conversations
-
-### Getting Help
-
-- Check the test suite for usage examples
-- Review the Jupyter notebooks for step-by-step implementations
-- Examine the `lib/` modules for detailed API documentation
 
 
